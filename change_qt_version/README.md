@@ -36,6 +36,16 @@ QMake version 3.1
 Using Qt version 5.12.12 in /home/hexu/Qt5.12.12/5.12.12/gcc_64/lib
 ```
 
+编译工程时就可以看到inlcude的路径和link的路径是不是对应qt版本的了。
+
+```
+$ cd hello
+$ qmake
+$ make
+g++ -c -pipe -O2 -Wall -W -D_REENTRANT -fPIC -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB -I. -I. -I../../../../Qt5.12.12/5.12.12/gcc_64/include -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtWidgets -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtGui -I../../../../Qt5.12.12/5.12.12/gcc_64/include/QtCore -I. -isystem /usr/include/libdrm -I../../../../Qt5.12.12/5.12.12/gcc_64/mkspecs/linux-g++ -o hello.o hello.cpp
+g++ -Wl,-O1 -Wl,-rpath,/home/hexu/Qt5.12.12/5.12.12/gcc_64/lib -o hello hello.o   /home/hexu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Widgets.so /home/hexu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Gui.so /home/hexu/Qt5.12.12/5.12.12/gcc_64/lib/libQt5Core.so -lGL -lpthread
+```
+
 #### cmake方式
 
 通过把qt的路径添加到CMAKE_PREFIX_PATH变量里实现修改依赖qt版本 
@@ -45,6 +55,12 @@ $ vim CMakeLists.txt
 
 list(APPEND CMAKE_PREFIX_PATH "/home/hexu/Qt5.12.12/5.12.12/gcc_64")
 ````
+
+另外，也可以通过设置Qt5_DIR环境变量的方式指定qt版本
+
+```
+$ export Qt5_DIR="/home/mackhe/Qt5.14.2/5.14.2/gcc_64"
+```
 
 #### 验证使用的qt版本
 
