@@ -8,6 +8,7 @@ Widget::Widget(QWidget *parent)
                                     this);
 
     cmmBtn->setFlat(true);
+    cmmBtn->setGeometry(0, 0, 200, 60);
 
     connect(cmmBtn, SIGNAL(clicked()), this, SLOT(clickFunc()));
 }
