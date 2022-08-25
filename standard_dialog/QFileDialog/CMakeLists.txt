@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1.0)
 
-project(Layout VERSION 1.0.0 LANGUAGES CXX)
+project(FileDialog VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -15,10 +15,10 @@ endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
-add_executable(Layout
-  widget.h
-  widget.cpp
+add_executable(FileDialog
+  filedlg.h
+  filedlg.cpp
   main.cpp
   )
 
-target_link_libraries(Layout Qt5::Widgets)
+target_link_libraries(FileDialog Qt5::Widgets)

@@ -1,13 +1,13 @@
 
 QT       += core gui
 
-TARGET = Layout
+TARGET = FileDialog
 TEMPLATE = app
 
 greaterThan(QT_MAJOR_VERSION, 4): QT += widgets
 
 
 SOURCES += main.cpp\
-        widget.cpp
+        filedlg.cpp
 
-HEADERS  += widget.h
+HEADERS  += filedlg.h
