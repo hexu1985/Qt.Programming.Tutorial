@@ -1,6 +1,6 @@
 cmake_minimum_required(VERSION 3.1.0)
 
-project(QComboBox VERSION 1.0.0 LANGUAGES CXX)
+project(QRadioButton VERSION 1.0.0 LANGUAGES CXX)
 
 set(CMAKE_CXX_STANDARD 11)
 set(CMAKE_CXX_STANDARD_REQUIRED ON)
@@ -15,14 +15,10 @@ endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
-set(QRC_SOURCE_FILES "")
-qt5_add_resources(QRC_SOURCE_FILES resources.qrc)
-
-add_executable(QComboBox
+add_executable(QRadioButton
   widget.h
   widget.cpp
   main.cpp
-  ${QRC_SOURCE_FILES}
   )
 
-target_link_libraries(QComboBox Qt5::Widgets)
+target_link_libraries(QRadioButton Qt5::Widgets)

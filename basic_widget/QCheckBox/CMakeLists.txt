@@ -15,11 +15,14 @@ endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
+set(QRC_SOURCE_FILES "")
+qt5_add_resources(QRC_SOURCE_FILES resources.qrc)
+
 add_executable(QCheckBox
   widget.h
   widget.cpp
   main.cpp
-  resources.qrc
+  ${QRC_SOURCE_FILES}
   )
 
 target_link_libraries(QCheckBox Qt5::Widgets)
