@@ -3,6 +3,7 @@
 #include <QDialog>
 #include <QGridLayout>
 #include <QPushButton>
+#include <QLineEdit>
 
 class FileDlg : public QDialog
 {
@@ -17,6 +18,7 @@ public:
     QPushButton *btnSelDir;
     QPushButton *btnSave;
     QGridLayout *mainLayout;
+    QLineEdit *pathLineEdit;
 
 private slots:
     void on_btnOpen_clicked();

@@ -14,11 +14,13 @@ FileDlg::FileDlg(QWidget *parent) :
     btnOpenMulti = new QPushButton(tr("打开多个文件"));
     btnSelDir = new QPushButton(tr("选择已有目录"));
     btnSave = new QPushButton(tr("保存文件"));
+    pathLineEdit = new QLineEdit;
 
     mainLayout->addWidget(btnOpen, 0, 0);
     mainLayout->addWidget(btnOpenMulti, 0, 1);
     mainLayout->addWidget(btnSelDir, 1, 0);
     mainLayout->addWidget(btnSave, 1, 1);
+    mainLayout->addWidget(pathLineEdit, 2, 0, 1, 2);
 
     setLayout(mainLayout);
 
@@ -39,6 +41,8 @@ void FileDlg::on_btnOpen_clicked()
 
     if (!aFileName.isEmpty())
         qDebug() << "file: " << aFileName;
+
+    pathLineEdit->setText(aFileName);
 }
 
 void FileDlg::on_btnOpenMulti_clicked()
@@ -51,6 +55,8 @@ void FileDlg::on_btnOpenMulti_clicked()
     QStringList fileList=QFileDialog::getOpenFileNames(this,dlgTitle,curPath,filter);
     for (int i=0; i<fileList.count();i++)
         qDebug() << i << " file: " << fileList.at(i);
+
+    pathLineEdit->setText(fileList.at(0));
 }
 
 void FileDlg::on_btnSelDir_clicked()
@@ -63,6 +69,8 @@ void FileDlg::on_btnSelDir_clicked()
     QString selectedDir=QFileDialog::getExistingDirectory(this,dlgTitle,curPath,QFileDialog::ShowDirsOnly);
     if (!selectedDir.isEmpty())
         qDebug() << "dir: " << selectedDir;
+
+    pathLineEdit->setText(selectedDir);
 }
 
 void FileDlg::on_btnSave_clicked()
@@ -73,6 +81,8 @@ void FileDlg::on_btnSave_clicked()
     QString aFileName=QFileDialog::getSaveFileName(this,dlgTitle,curPath,filter);
     if (!aFileName.isEmpty())
         qDebug() << "file: " << aFileName;
+
+    pathLineEdit->setText(aFileName);
 }
 
 FileDlg::~FileDlg()
