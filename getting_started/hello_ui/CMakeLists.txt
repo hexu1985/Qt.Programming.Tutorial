@@ -15,6 +15,9 @@ endif()
 
 find_package(Qt5 COMPONENTS Widgets REQUIRED)
 
-add_executable(hello main.cpp widget.cpp)
+add_executable(hello 
+    main.cpp 
+    widget.h
+    widget.cpp)
 
 target_link_libraries(hello Qt5::Widgets)
