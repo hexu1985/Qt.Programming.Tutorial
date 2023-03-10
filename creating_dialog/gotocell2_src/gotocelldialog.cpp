@@ -11,7 +11,7 @@ GoToCellDialog::GoToCellDialog(QWidget *parent)
     : QDialog(parent)
 {
     QLabel* label = new QLabel("&Cell Location:", this);
-    lineEdit = new QLineEdit();
+    lineEdit = new QLineEdit(this);
     label->setBuddy(lineEdit);
     QRegExp regExp("[A-Za-z][1-9][0-9]{0,2}");
     lineEdit->setValidator(new QRegExpValidator(regExp, this));
@@ -20,14 +20,14 @@ GoToCellDialog::GoToCellDialog(QWidget *parent)
     hboxLayout1->addWidget(lineEdit);
 
     QSpacerItem *spacerItem = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-    okButton = new QPushButton("ok");
-    QPushButton *cancelButton = new QPushButton("cancel");
+    okButton = new QPushButton("ok", this);
+    QPushButton *cancelButton = new QPushButton("cancel", this);
     QHBoxLayout* hboxLayout2 = new QHBoxLayout();
     hboxLayout2->addItem(spacerItem);
     hboxLayout2->addWidget(okButton);
     hboxLayout2->addWidget(cancelButton);
 
-    QVBoxLayout* mainLayout = new QVBoxLayout;
+    QVBoxLayout* mainLayout = new QVBoxLayout(this);
     mainLayout->addLayout(hboxLayout1);
     mainLayout->addLayout(hboxLayout2);
 
