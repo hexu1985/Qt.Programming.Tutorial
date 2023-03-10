@@ -2,24 +2,25 @@
 
 #include <QLabel>
 #include <QSpacerItem>
-#include <QPushButton>
-#include <QLineEdit>
 #include <QHBoxLayout>
 #include <QVBoxLayout>
+#include <QRegExpValidator>
 
 
 GoToCellDialog::GoToCellDialog(QWidget *parent)
     : QDialog(parent)
 {
     QLabel* label = new QLabel("&Cell Location:", this);
-    QLineEdit *lineEdit = new QLineEdit();
+    lineEdit = new QLineEdit();
     label->setBuddy(lineEdit);
+    QRegExp regExp("[A-Za-z][1-9][0-9]{0,2}");
+    lineEdit->setValidator(new QRegExpValidator(regExp, this));
     QHBoxLayout* hboxLayout1 = new QHBoxLayout();
     hboxLayout1->addWidget(label);
     hboxLayout1->addWidget(lineEdit);
 
     QSpacerItem *spacerItem = new QSpacerItem(40, 20, QSizePolicy::Expanding, QSizePolicy::Minimum);
-    QPushButton *okButton = new QPushButton("ok");
+    okButton = new QPushButton("ok");
     QPushButton *cancelButton = new QPushButton("cancel");
     QHBoxLayout* hboxLayout2 = new QHBoxLayout();
     hboxLayout2->addItem(spacerItem);
@@ -33,5 +34,13 @@ GoToCellDialog::GoToCellDialog(QWidget *parent)
     setLayout(mainLayout);
 
     okButton->setEnabled(false);
+
+    connect(lineEdit, SIGNAL(textChanged(QString)), this, SLOT(on_lineEdit_textChanged(QString)));
+    connect(okButton, SIGNAL(clicked()), this, SLOT(accept()));
+    connect(cancelButton, SIGNAL(clicked()), this, SLOT(reject()));
 }
 
+void GoToCellDialog::on_lineEdit_textChanged(QString)
+{
+    okButton->setEnabled(lineEdit->hasAcceptableInput());
+}
