@@ -13,3 +13,6 @@
 
 
 ### [二维图形](2d_graphics)
+- [用QPainter绘图](2d_graphics/paintbasic)
+- [坐标系统变换](2d_graphics/oventimer)
+- [GraphCanvas](2d_graphics/graphcanvas)
