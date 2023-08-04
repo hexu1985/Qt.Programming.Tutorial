@@ -4,23 +4,23 @@
 #include <QtWidgets/QLabel>
 
 class SignalSlot : public QObject
- {
-     Q_OBJECT
+{
+    Q_OBJECT
 
- public:
-     SignalSlot() { m_value = 0; }
+public:
+    SignalSlot() { m_value = 0; }
 
-     int value() const { return m_value; }
+    int value() const { return m_value; }
 
- public slots:
-     void setValue(int value);
+public slots:
+    void setValue(int value);
 
- signals:
-     void valueChanged(int newValue);
+signals:
+    void valueChanged(int newValue);
 
- private:
-     int m_value;
- };
+private:
+    int m_value;
+};
 
 
 class Widget : public QWidget
