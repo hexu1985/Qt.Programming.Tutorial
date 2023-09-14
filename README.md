@@ -9,14 +9,21 @@
 - [窗口部件的布局](getting_started/age)
 
 
-### [基础控件](basic_widget)
-
 ### [创建对话框](creating_dialog)
 - [子类化QDialog](creating_dialog/find)
 - [快速设计对话框](creating_dialog/rapid_dialog_design)
 - [改变形状的对话框](shape_changing_dialog)
 
+
+### [创建主窗口](creating_mainwindow)
+- [基本的QMainWindow主窗口程序](creating_mainwindow/mainwindow)
+
+
 ### [二维图形](2d_graphics)
 - [用QPainter绘图](2d_graphics/paintbasic)
 - [坐标系统变换](2d_graphics/oventimer)
 - [GraphCanvas](2d_graphics/graphcanvas)
+
+
+### [基础控件](basic_widget)
+
