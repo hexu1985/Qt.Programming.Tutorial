@@ -11,6 +11,9 @@
 
 ### [基础控件](basic_widget)
 
+### [创建对话框](creating_dialog)
+- [子类化QDialog](creating_dialog/find)
+- [快速设计对话框](creating_dialog/rapid_dialog_design)
 
 ### [二维图形](2d_graphics)
 - [用QPainter绘图](2d_graphics/paintbasic)
