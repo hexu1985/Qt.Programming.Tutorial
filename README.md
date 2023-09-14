@@ -14,6 +14,7 @@
 ### [创建对话框](creating_dialog)
 - [子类化QDialog](creating_dialog/find)
 - [快速设计对话框](creating_dialog/rapid_dialog_design)
+- [改变形状的对话框](shape_changing_dialog)
 
 ### [二维图形](2d_graphics)
 - [用QPainter绘图](2d_graphics/paintbasic)
