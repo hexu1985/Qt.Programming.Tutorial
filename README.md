@@ -27,3 +27,24 @@
 
 ### [基础控件](basic_widget)
 
+
+## Qt 安装
+
+### ubuntu下安装Qt开发环境
+
+1. 安装依赖
+
+```
+$ sudo apt install gcc g++
+$ sudo apt install clang clang++
+$ sudo apt install make cmake
+```
+
+2. 安装qt开发环境
+
+```
+$ sudo apt install build-essential
+$ sudo apt install qtbase5-dev qtchooser qt5-qmake qtbase5-dev-tools
+$ sudo apt install qtcreator
+$ sudo apt install qt5*
+```
