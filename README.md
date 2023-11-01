@@ -8,6 +8,11 @@
 - [建立连接(信号和槽)](getting_started/quit)
 - [窗口部件的布局](getting_started/age)
 
+### [基础控件](basic_widget)
+- [复选框及分组](basic_widget/QCheckBox_QButtonGroup)
+- [下拉列表框](basic_widget/QComboBox)
+- [命令链接按钮](basic_widget/QCommandLinkButton)
+
 
 ### [创建对话框](creating_dialog)
 - [子类化QDialog](creating_dialog/find)
@@ -23,9 +28,6 @@
 - [用QPainter绘图](2d_graphics/paintbasic)
 - [坐标系统变换](2d_graphics/oventimer)
 - [GraphCanvas](2d_graphics/graphcanvas)
-
-
-### [基础控件](basic_widget)
 
 
 ## Qt 安装
