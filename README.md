@@ -28,6 +28,11 @@
 - [用QPainter绘图](2d_graphics/paintbasic)
 - [坐标系统变换](2d_graphics/oventimer)
 - [GraphCanvas](2d_graphics/graphcanvas)
+- [一个简单的绘图工具](2d_graphics/painter)
+
+### [信号和槽](signal_slot)
+- [自定义信号和槽](signal_slot/CustomSignalSlot)
+- [跨线程的信号和槽](signal_slot/CustomSignalSlotThread)
 
 
 ## Qt 安装
