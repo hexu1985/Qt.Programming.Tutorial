@@ -1,5 +1,6 @@
 #include <QtGui>
 #include "drawwidget.h"
+#include <iostream>
 
 DrawWidget::DrawWidget()	
 {
@@ -38,6 +39,7 @@ void DrawWidget::setColor(QColor c)
 void DrawWidget::mousePressEvent(QMouseEvent * e)
 {
     startPos = e->pos();
+    std::cout << __func__ << ", e->pos(): (" << startPos.x() << ", " << startPos.y() << ")" << std::endl;
 }
 
 void DrawWidget::mouseMoveEvent(QMouseEvent * e)
@@ -53,6 +55,7 @@ void DrawWidget::mouseMoveEvent(QMouseEvent * e)
     painter.drawLine(startPos,e->pos());
     painter.end();
     startPos = e->pos();
+    std::cout << __func__ << ", e->pos(): (" << startPos.x() << ", " << startPos.y() << ")" << std::endl;
     update();
     
 }
