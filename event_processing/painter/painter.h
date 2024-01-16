@@ -20,6 +20,7 @@ public:
 public slots:
     void slotColor();
     void slotStyle();
+    bool eventFilter(QObject*,QEvent*);
     
 private: 
     DrawWidget *widget;

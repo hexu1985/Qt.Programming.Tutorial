@@ -5,6 +5,7 @@
 #include <QToolBar>
 #include <QLabel>
 #include <QColorDialog>
+#include <iostream>
 
 Painter::Painter(QWidget *parent)
 	: QMainWindow(parent)
@@ -24,6 +25,7 @@ Painter::Painter(QWidget *parent)
     slotStyle();
     widget->setWidth(widthSpinBox->value());
     widget->setColor(Qt::black); 
+	widget->installEventFilter(this);
 }
 
 void Painter::createToolBar()
@@ -81,3 +83,21 @@ void Painter::slotColor()
     }
 }
 
+bool Painter::eventFilter(QObject* watched,QEvent* event)
+{
+	if(watched == widget)
+	{
+		if(event->type() == QEvent::MouseButtonPress)
+		{
+			QMouseEvent *mouseEvent = (QMouseEvent *)event;	
+            QPoint startPos = mouseEvent->pos();
+            std::cout << __func__ << ", e->pos(): (" << startPos.x() << ", " << startPos.y() << ")" << std::endl;
+		}		
+		if(event->type() == QEvent::MouseButtonRelease)
+		{
+			QMouseEvent *mouseEvent = (QMouseEvent *)event;	
+		}	
+	}
+
+	return QMainWindow::eventFilter(watched,event);	
+}

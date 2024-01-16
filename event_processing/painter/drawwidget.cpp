@@ -55,7 +55,7 @@ void DrawWidget::mouseMoveEvent(QMouseEvent * e)
     painter.drawLine(startPos,e->pos());
     painter.end();
     startPos = e->pos();
-    std::cout << __func__ << ", e->pos(): (" << startPos.x() << ", " << startPos.y() << ")" << std::endl;
+//    std::cout << __func__ << ", e->pos(): (" << startPos.x() << ", " << startPos.y() << ")" << std::endl;
     update();
     
 }
