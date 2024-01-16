@@ -15,6 +15,11 @@ DrawWidget::DrawWidget()
     setMinimumSize(600,400);
 }
 
+DrawWidget::~DrawWidget()	
+{
+    delete pix;
+}
+
 void DrawWidget::setStyle(int s)
 {
     style = s;
@@ -37,16 +42,16 @@ void DrawWidget::mousePressEvent(QMouseEvent * e)
 
 void DrawWidget::mouseMoveEvent(QMouseEvent * e)
 {
-    QPainter *painter = new QPainter(pix);
+    QPainter painter;
     QPen pen;
     pen.setStyle((Qt::PenStyle)style);      	
     pen.setWidth(weight);
     pen.setColor(color);
-    painter->begin(pix);
-    painter->setPen(pen);
+    painter.begin(pix);
+    painter.setPen(pen);
     
-    painter->drawLine(startPos,e->pos());
-    painter->end();
+    painter.drawLine(startPos,e->pos());
+    painter.end();
     startPos = e->pos();
     update();
     
@@ -67,6 +72,7 @@ void DrawWidget::resizeEvent(QResizeEvent * event)
         newPix->fill(Qt::white);
         QPainter p(newPix);
         p.drawPixmap(QPoint(0,0),*pix);
+        delete pix;
         pix = newPix;
     }
     QWidget::resizeEvent(event);
@@ -77,6 +83,7 @@ void DrawWidget::clear()
 {
     QPixmap *clearPix = new QPixmap(size());
     clearPix->fill(Qt::white);
+    delete pix;
     pix = clearPix;
     update();
 }

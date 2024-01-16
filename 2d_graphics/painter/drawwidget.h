@@ -12,6 +12,7 @@ class DrawWidget : public QWidget
     Q_OBJECT
 public:
     DrawWidget();
+    ~DrawWidget();
     
     void mousePressEvent(QMouseEvent *);
     void mouseMoveEvent(QMouseEvent *);
