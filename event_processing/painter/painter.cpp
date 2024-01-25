@@ -1,91 +1,35 @@
 #include "painter.h"
-#include <QToolButton>
-#include <QComboBox>
-#include <QSpinBox>
-#include <QToolBar>
-#include <QLabel>
-#include <QColorDialog>
+#include <QVBoxLayout>
+#include <QEvent>
+#include <QMouseEvent>
 #include <iostream>
 
 Painter::Painter(QWidget *parent)
-	: QMainWindow(parent)
+	: QWidget(parent)
 {
-    QFont font("ZYSong18030",12);
-    setFont(font);
-    
-    setWindowTitle(tr("Simple Painter"));    
+    setWindowTitle("Simple Painter");    
    
-    widget = new DrawWidget;
-    setCentralWidget(widget);
+    QVBoxLayout *vboxLayout = new QVBoxLayout();
+
+    clearButton = new QPushButton("clear", this);
+    vboxLayout->addWidget(clearButton);
     
-    createToolBar();
+    canvas = new DrawWidget;
+    canvas->setWidth(2);
+    canvas->setColor(Qt::black); 
+    vboxLayout->addWidget(canvas);
+
+    setLayout(vboxLayout);
 
     setMinimumSize(600,400);
-    
-    slotStyle();
-    widget->setWidth(widthSpinBox->value());
-    widget->setColor(Qt::black); 
-	widget->installEventFilter(this);
-}
 
-void Painter::createToolBar()
-{
-    QToolBar *toolBar = addToolBar("Tool");
-    QLabel *label1 = new QLabel(tr("style:"));
-    styleComboBox = new QComboBox;
-    styleComboBox->addItem("SolidLine", (int) Qt::SolidLine);
-    styleComboBox->addItem("DashLine", (int) Qt::DashLine);
-    styleComboBox->addItem("DotLine", (int) Qt::DotLine);
-    styleComboBox->addItem("DashDotLine", (int) Qt::DashDotLine);
-    styleComboBox->addItem("DashDotDotLine", (int) Qt::DashDotDotLine);
-    toolBar->addWidget(label1);
-    toolBar->addWidget(styleComboBox);
-    toolBar->addSeparator();
-    connect(styleComboBox,SIGNAL(activated(int)),this,SLOT(slotStyle()));
-        
-    QLabel *label2 = new QLabel(tr("width:"));
-    widthSpinBox = new QSpinBox;
-    widthSpinBox->setRange(0,10);
-    toolBar->addWidget(label2);    
-    toolBar->addWidget(widthSpinBox);
-    toolBar->addSeparator();
-    connect(widthSpinBox,SIGNAL(valueChanged(int)),widget,SLOT(setWidth(int)));
-    
-    colorBtn = new QToolButton;
-    QPixmap pixmap(20,20);
-    pixmap.fill(Qt::black);
-    colorBtn->setIcon(QIcon(pixmap));
-    toolBar->addWidget(colorBtn);
-    toolBar->addSeparator();
-    connect(colorBtn,SIGNAL(clicked()),this,SLOT(slotColor()));
-    
-    QToolButton *clearBtn = new QToolButton;
-    clearBtn->setText(tr("Clear"));
-    toolBar->addWidget(clearBtn);
-    connect(clearBtn,SIGNAL(clicked()),widget,SLOT(clear()));
-}
-
-void Painter::slotStyle()
-{
-    widget->setStyle(styleComboBox->itemData(
-    		styleComboBox->currentIndex(),Qt::UserRole).toInt());
-}
-
-void Painter::slotColor()
-{
-    QColor color = QColorDialog::getColor(Qt::black,this);
-    if (color.isValid())
-    {
-        widget->setColor(color);
-        QPixmap p(20,20);
-        p.fill(color);
-        colorBtn->setIcon(QIcon(p));
-    }
+    connect(clearButton, SIGNAL(clicked()), canvas, SLOT(clear()));
+	canvas->installEventFilter(this);
 }
 
 bool Painter::eventFilter(QObject* watched,QEvent* event)
 {
-	if(watched == widget)
+	if(watched == canvas)
 	{
 		if(event->type() == QEvent::MouseButtonPress)
 		{
@@ -99,5 +43,5 @@ bool Painter::eventFilter(QObject* watched,QEvent* event)
 		}	
 	}
 
-	return QMainWindow::eventFilter(watched,event);	
+	return QWidget::eventFilter(watched,event);	
 }

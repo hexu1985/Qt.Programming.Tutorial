@@ -1,32 +1,23 @@
-#ifndef PAINTER_H
-#define PAINTER_H
+#pragma once
 
-#include <QtGui>
-#include <QMainWindow>
+#include <QPushButton>
 #include "drawwidget.h"
 
 class QToolButton;
 class QComboBox;
 class QSpinBox;
 
-class Painter : public QMainWindow
+class Painter : public QWidget
 {
     Q_OBJECT
 public:
     Painter(QWidget *parent=0);
     
-    void createToolBar();
-    
 public slots:
-    void slotColor();
-    void slotStyle();
     bool eventFilter(QObject*,QEvent*);
     
 private: 
-    DrawWidget *widget;
-    QToolButton *colorBtn;
-    QComboBox *styleComboBox;
-    QSpinBox *widthSpinBox;
+    DrawWidget *canvas;
+    QPushButton *clearButton;
 };
 
-#endif
