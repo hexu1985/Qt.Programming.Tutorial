@@ -35,12 +35,18 @@ bool Painter::eventFilter(QObject* watched,QEvent* event)
 		{
 			QMouseEvent *mouseEvent = (QMouseEvent *)event;	
             QPoint startPos = mouseEvent->pos();
-            std::cout << __func__ << ", e->pos(): (" << startPos.x() << ", " << startPos.y() << ")" << std::endl;
+            std::cout << "MouseButtonPress, e->pos(): (" << startPos.x() << ", " << startPos.y() << ")" << std::endl;
 		}		
 		if(event->type() == QEvent::MouseButtonRelease)
 		{
 			QMouseEvent *mouseEvent = (QMouseEvent *)event;	
-		}	
+		}
+		if(event->type() == QEvent::MouseMove)
+		{
+			QMouseEvent *mouseEvent = (QMouseEvent *)event;	
+            QPoint startPos = mouseEvent->pos();
+            std::cout << "MouseMove, e->pos(): (" << startPos.x() << ", " << startPos.y() << ")" << std::endl;
+		}		
 	}
 
 	return QWidget::eventFilter(watched,event);	
